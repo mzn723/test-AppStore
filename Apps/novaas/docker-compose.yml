@@ -1,0 +1,34 @@
+name: novaas
+version: '2.4'
+services:
+    novaas:
+        build: .
+        image: "registry.gitlab.com/novaas/catalog/nova-school-of-science-and-technology/novaas:latest"
+        environment:
+            - "PORT_FORWARDING=${PORT_FORWARDING}" 
+            - "HOST=${HOST}"
+            - "BROKER_SERVICE_HOST=${BROKER_SERVICE_HOST}"
+            - "BROKER_SERVICE_PORT=${BROKER_SERVICE_PORT}"
+            - "REPO_LOCATION=${REPO_LOCATION}"
+        ports:
+            - "${PORT_FORWARDING}:1880"
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+    - s390x
+    - arm
+  main: novaas
+  author: novaas team
+  category: Developer
+  description:
+    en_us: The NOVA Asset Administration Shell (NOVAAS) is an open source reference implementation and execution environment. The AAS implements the concept of the Digital Twin of a physical object turning it into an Industrie 4.0 component that facilitates interoperability in industrial applications.
+  developer: NOVA School of Science and Technology
+  screenshot_link: https://gitlab.com/novaas/catalog/nova-school-of-science-and-technology/novaas/-/raw/master/source/images/Screenshot_2020-12-15_at_22.20.37.png
+  icon: https://gitlab.com/novaas/catalog/nova-school-of-science-and-technology/novaas/-/raw/master/files/images/logo.png
+  tagline:
+    en_us: An implementation of the concept of the Digital Twin of a physical object turning it into an Industrie 4.0 component that facilitates interoperability in industrial applications.
+  title:
+    en_us: NOVAAS
+  port_map: "1880"
+  
