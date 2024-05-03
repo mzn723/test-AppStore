@@ -1,9 +1,8 @@
 name: novaas
-version: '2.4'
 services:
     novaas:
         build: .
-        image: "registry.gitlab.com/novaas/catalog/nova-school-of-science-and-technology/novaas:latest"
+        image: "registry.gitlab.com/novaas/catalog/nova-school-of-science-and-technology/novaas:fec2cf3a1b0c806400bb2350eb9732cd1405b5f3"
         environment:
             - "PORT_FORWARDING=${PORT_FORWARDING}" 
             - "HOST=${HOST}"
