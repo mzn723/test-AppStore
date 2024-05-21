@@ -4,13 +4,18 @@ services:
         build: .
         image: "registry.gitlab.com/novaas/catalog/nova-school-of-science-and-technology/novaas:fec2cf3a1b0c806400bb2350eb9732cd1405b5f3"
         environment:
-            - "PORT_FORWARDING=${PORT_FORWARDING}" 
-            - "HOST=${HOST}"
-            - "BROKER_SERVICE_HOST=${BROKER_SERVICE_HOST}"
-            - "BROKER_SERVICE_PORT=${BROKER_SERVICE_PORT}"
-            - "REPO_LOCATION=${REPO_LOCATION}"
+            - "PORT_FORWARDING=1870" 
+            - "HOST=localhost"
+            - "BROKER_SERVICE_HOST=localhost"
+            - "BROKER_SERVICE_PORT=1883"
+            - "REPO_LOCATION=https://gitlab.com/novaas/catalog/nova-school-of-science-and-technology/novaas"
         ports:
-            - "${PORT_FORWARDING}:1880"
+            - "1870:1880"
+        x-casaos:
+          ports:
+           - container: "1870"
+            description:
+              en_us: ""
 x-casaos:
   architectures:
     - amd64
@@ -29,5 +34,5 @@ x-casaos:
     en_us: An implementation of the concept of the Digital Twin of a physical object turning it into an Industrie 4.0 component that facilitates interoperability in industrial applications.
   title:
     en_us: NOVAAS
-  port_map: "1880"
+  port_map: "1870"
   
