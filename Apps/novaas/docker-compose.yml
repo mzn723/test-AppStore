@@ -1,38 +1,31 @@
 name: novaas
 services:
-    novaas:
-        build: .
-        image: "registry.gitlab.com/novaas/catalog/nova-school-of-science-and-technology/novaas:fec2cf3a1b0c806400bb2350eb9732cd1405b5f3"
-        environment:
-            - "PORT_FORWARDING=1870" 
-            - "HOST=localhost"
-            - "BROKER_SERVICE_HOST=localhost"
-            - "BROKER_SERVICE_PORT=1883"
-            - "REPO_LOCATION=https://gitlab.com/novaas/catalog/nova-school-of-science-and-technology/novaas"
-        ports:
-            - "1870:1880"
-        x-casaos:
-          ports:
-           - container: "1870"
-            description:
-              en_us: ""
+  novaas:
+    image: registry.gitlab.com/novaas/catalog/nova-school-of-science-and-technology/novaas:fec2cf3a1b0c806400bb2350eb9732cd1405b5f3
+    restart: unless-stopped
+    x-casaos:
+      ports:
+        - container: '1870'
+          description:
+            en_us: Mnovaas node-red Port
+    ports:
+      - target: 1870
+        published: "1880"
+        protocol: tcp
+    container_name: novaas
 x-casaos:
   architectures:
     - amd64
     - arm64
-    - s390x
-    - arm
   main: novaas
-  author: novaas team
-  category: Developer
   description:
     en_us: The NOVA Asset Administration Shell (NOVAAS) is an open source reference implementation and execution environment. The AAS implements the concept of the Digital Twin of a physical object turning it into an Industrie 4.0 component that facilitates interoperability in industrial applications.
-  developer: NOVA School of Science and Technology
+ tagline:
+    en_us: The NOVA Asset Administration Shell (NOVAAS) is an open source reference implementation and execution environment.
   screenshot_link: https://gitlab.com/novaas/catalog/nova-school-of-science-and-technology/novaas/-/raw/master/source/images/Screenshot_2020-12-15_at_22.20.37.png
+  developer: NOVA School of Science and Technology
+  author: novaas team
   icon: https://gitlab.com/novaas/catalog/nova-school-of-science-and-technology/novaas/-/raw/master/files/images/logo.png
-  tagline:
-    en_us: An implementation of the concept of the Digital Twin of a physical object turning it into an Industrie 4.0 component that facilitates interoperability in industrial applications.
+  category: Developer
   title:
     en_us: NOVAAS
-  port_map: "1870"
-  
