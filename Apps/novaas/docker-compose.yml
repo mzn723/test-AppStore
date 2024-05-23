@@ -1,7 +1,7 @@
 name: novaas
 services:
   novaas:
-    image: registry.gitlab.com/novaas/catalog/nova-school-of-science-and-technology/novaas:fec2cf3a1b0c806400bb2350eb9732cd1405b5f3
+    image: mongo:4.4.22
     restart: unless-stopped
     x-casaos:
       ports:
